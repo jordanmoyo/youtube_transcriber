@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  app:
+    image: yourusername/my-streamlit-app:latest
+    restart: always
+    ports:
+      - "80:8501"
