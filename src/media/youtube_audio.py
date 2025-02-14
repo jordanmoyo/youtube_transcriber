@@ -9,11 +9,13 @@ class YouTubeAudio:
     def __init__(self, url):
         self.url = url
         self.audio_path_mp3 = "./media_cache/downloaded_audio"  # Temp MP3 file
+        self.cookies_file = os.getenv("COOKIES_PATH", "src/cookies/cookies.txt")
         # self.audio_path_wav = "./media_cache/downloaded_audio.wav"  # Final WAV file
 
     def download_audio(self):
         """Download audio from a YouTube video in the best available format."""
         ydl_opts = {
+            'cookiefile': self.cookies_file,
             'format': 'bestaudio/best',
             'outtmpl': self.audio_path_mp3,
             'postprocessors': [{
